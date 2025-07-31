@@ -3,12 +3,12 @@ const _fetch = async (url = '') => {
   return await (await (await fetch(url)).text()).toString();
 }
 //HTMLElementに変換
-const _parse = (text = '') => {
+const _domParse = (text = '') => {
   return new DOMParser().parseFromString(text, 'text/html').body;
 }
 //本体
 const _main = async (txt, page = '') => {
-  txt.append(_parse(await _fetch(`${location.origin}/pages/${page}.html`)));
+  txt.append(_domParse(await _fetch(`${location.origin}/pages/${page}.html`)));
 }
 
 //読み込まれた時に実行
